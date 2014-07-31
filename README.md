@@ -5,10 +5,8 @@ Common Android Classes
 
 These are some common classes for Android development in usual work days.
 I just thought I need a place to find them easier.
-
 If your have any better opinions of one of them, or also want to mark one of
 yours in here, please give me a pull-request.
-
 If one day, some developers can find something useful here, I'll be proud of
 what I'm done today.
 
@@ -41,5 +39,4 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with CommonClasses.  If not, see <http://www.gnu.org/licenses/>.
-
 ```
