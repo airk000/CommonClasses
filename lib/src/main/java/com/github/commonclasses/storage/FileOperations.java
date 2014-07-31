@@ -38,6 +38,11 @@ import java.io.OutputStream;
  * <p/>
  * External storage in this class means application's private files, while application
  * is removed, these files will be deleted even though they are in the external storage
+ * <p/>
+ * Permission Needed
+ * <p/>
+ * <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+ * <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
  */
 public class FileOperations {
 

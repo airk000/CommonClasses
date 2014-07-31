@@ -36,6 +36,13 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 
+/**
+ * Network download tool
+ * <p/>
+ * Permission Needed
+ * <p/>
+ * <uses-permission android:name="android.permission.INTERNET" />
+ */
 public class DownloadUtils {
     private static final int CONNECT_TIMEOUT = 10000;
     private static final int DATA_TIMEOUT = 40000;
