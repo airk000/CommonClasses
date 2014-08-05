@@ -28,10 +28,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import com.github.commonclasses.logwrapper.LogWrapper;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * File Operations Utils
@@ -150,6 +147,64 @@ public class FileOperations {
         return file.exists() && file.delete();
     }
 
+    /**
+     * Get a file object with given filename, let the system decide internal or external
+     * storage to use.
+     *
+     * @param context  Context
+     * @param filename Given filename
+     * @return File object
+     */
+    public static File getFile(Context context, String filename) {
+        if (isExternalStorageAvailable() && !isExternalStorageOnlyReadable()) {
+            return getExternalStorageFile(context, filename);
+        } else {
+            return getInternalStorageFile(context, filename);
+        }
+    }
+
+    /**
+     * Delete a file with given filename and let the system decide internal or external
+     * storage to use.
+     *
+     * @param context  Context
+     * @param filename Given filename
+     * @return File object
+     */
+    public static boolean deleteFile(Context context, String filename) {
+        if (isExternalStorageAvailable() && !isExternalStorageOnlyReadable()) {
+            return deleteExternalStorageFile(context, filename);
+        } else {
+            return deleteInternalStorageFile(context, filename);
+        }
+    }
+
+    /**
+     * Copy file
+     *
+     * @param src Source file object
+     * @param tgt Target file object
+     * @throws IOException
+     */
+    public static void copyFile(File src, File tgt) throws IOException {
+        InputStream input = null;
+        OutputStream output = null;
+        try {
+            input = new FileInputStream(src);
+            output = new FileOutputStream(tgt);
+            byte[] buf = new byte[1024];
+            while (input.read(buf) > 0) {
+                output.write(buf);
+            }
+        } finally {
+            if (input != null) {
+                input.close();
+            }
+            if (output != null) {
+                output.close();
+            }
+        }
+    }
 
     /**
      * Gets the content:// URI  from the given corresponding path to a file
